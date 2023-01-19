@@ -1,3 +1,7 @@
+## ColdThunder11's fork of SharpFont
+
+This fork update the version and bind of FreeType and HarfBuzz to fit modern system. Dependencies based on HarfBuzz 6.0.0 and FreeType 2.12.1.
+
 SharpFont [![NuGet Version](https://img.shields.io/nuget/vpre/SharpFont.svg)](https://www.nuget.org/packages/SharpFont) [![Gratipay Tips](https://img.shields.io/gratipay/Robmaister.svg)](https://gratipay.com/Robmaister)
 =========
 ### Cross-platform FreeType bindings for .NET
