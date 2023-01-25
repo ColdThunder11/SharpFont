@@ -377,3 +377,5 @@ _ReSharper*/
 #NuGet
 *.nupkg
 .idea/
+
+!Dependencies/Windows/x64/
