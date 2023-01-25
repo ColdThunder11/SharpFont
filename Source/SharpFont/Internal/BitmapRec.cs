@@ -36,8 +36,8 @@ namespace SharpFont.Internal
 	[StructLayout(LayoutKind.Sequential)]
 	internal struct BitmapRec
 	{
-		internal int rows;
-		internal int width;
+		internal uint rows;
+		internal uint width;
 		internal int pitch;
 		internal IntPtr buffer;
 		internal short num_grays;

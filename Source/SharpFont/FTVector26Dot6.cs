@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*Copyright (c) 2015 Robert Rouhani <robert.rouhani@gmail.com>
 
 SharpFont based on Tao.FreeType, Copyright (c) 2003-2007 Tao Framework Team
@@ -20,6 +21,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
+
 #endregion
 
 using System;
@@ -35,8 +37,10 @@ namespace SharpFont
 	{
 		#region Fields
 
-		private IntPtr x;
-		private IntPtr y;
+		//typedef signed long  FT_Pos;
+		//May change
+		private Int32 x;
+		private Int32 y;
 
 		#endregion
 
@@ -50,15 +54,18 @@ namespace SharpFont
 		public FTVector26Dot6(Fixed26Dot6 x, Fixed26Dot6 y)
 			: this()
 		{
-			this.x = (IntPtr)x.Value;
-			this.y = (IntPtr)y.Value;
+			this.x = x.Value;
+			this.y = y.Value;
 		}
 
 		internal FTVector26Dot6(IntPtr reference)
 			: this()
 		{
-			this.x = Marshal.ReadIntPtr(reference);
-			this.y = Marshal.ReadIntPtr(reference, IntPtr.Size);
+			//this.x = Marshal.ReadIntPtr(reference);
+			//this.y = Marshal.ReadIntPtr(reference, IntPtr.Size);
+			var nativeStruct = PInvokeHelper.PtrToStructure<FTVector26Dot6>(reference);
+			this.x = nativeStruct.x;
+			this.y = nativeStruct.y;
 		}
 
 		#endregion
@@ -70,15 +77,9 @@ namespace SharpFont
 		/// </summary>
 		public Fixed26Dot6 X
 		{
-			get
-			{
-				return Fixed26Dot6.FromRawValue((int)x);
-			}
+			get { return Fixed26Dot6.FromRawValue((int)x); }
 
-			set
-			{
-				x = (IntPtr)value.Value;
-			}
+			set { x = value.Value; }
 		}
 
 		/// <summary>
@@ -86,15 +87,9 @@ namespace SharpFont
 		/// </summary>
 		public Fixed26Dot6 Y
 		{
-			get
-			{
-				return Fixed26Dot6.FromRawValue((int)y);
-			}
+			get { return Fixed26Dot6.FromRawValue((int)y); }
 
-			set
-			{
-				y = (IntPtr)value.Value;
-			}
+			set { y = value.Value; }
 		}
 
 		#endregion

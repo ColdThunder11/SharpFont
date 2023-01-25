@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*Copyright (c) 2012-2015 Robert Rouhani <robert.rouhani@gmail.com>
 
 SharpFont based on Tao.FreeType, Copyright (c) 2003-2007 Tao Framework Team
@@ -20,13 +21,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
+
 #endregion
 
 using System;
 using System.Runtime.InteropServices;
 
-using FT_Long = System.IntPtr;
-using FT_ULong = System.UIntPtr;
+//MSVC build of x64 program long should be 32 bit, but it give 64, emm,
+//WTF, may older freetype use other way to define FT_Long
+// Now only windows build, so just set it to 32 bit int, need more work.
+//using FT_Long = System.IntPtr;
+//using FT_ULong = System.UIntPtr;
+using FT_Long = System.Int32;
+using FT_ULong = System.UInt32;
 
 namespace SharpFont.Internal
 {
@@ -80,11 +87,15 @@ namespace SharpFont.Internal
 		private IntPtr stream;
 
 		private IntPtr sizes_list;
+
 		private GenericRec autohint;
 		private IntPtr extensions;
 
 		private IntPtr @internal;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(FaceRec)); } }
+		internal static int SizeInBytes
+		{
+			get { return Marshal.SizeOf(typeof(FaceRec)); }
+		}
 	}
 }

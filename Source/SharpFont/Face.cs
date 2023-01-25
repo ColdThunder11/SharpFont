@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*Copyright (c) 2012-2016 Robert Rouhani <robert.rouhani@gmail.com>
 
 SharpFont based on Tao.FreeType, Copyright (c) 2003-2007 Tao Framework Team
@@ -20,12 +21,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
+
 #endregion
 
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-
 using SharpFont.Bdf;
 using SharpFont.Internal;
 using SharpFont.MultipleMasters;
@@ -63,9 +64,7 @@ namespace SharpFont
 		/// <param name="library">The parent library.</param>
 		/// <param name="path">The path of the font file.</param>
 		public Face(Library library, string path)
-			: this(library, path, 0)
-		{
-		}
+			: this(library, path, 0) { }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Face"/> class.
@@ -98,7 +97,8 @@ namespace SharpFont
 		{
 			IntPtr reference;
 			memoryFaceHandle = GCHandle.Alloc(file, GCHandleType.Pinned);
-			Error err = FT.FT_New_Memory_Face(library.Reference, memoryFaceHandle.AddrOfPinnedObject(), file.Length, faceIndex, out reference);
+			Error err = FT.FT_New_Memory_Face(library.Reference, memoryFaceHandle.AddrOfPinnedObject(), file.Length,
+				faceIndex, out reference);
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);
@@ -136,7 +136,7 @@ namespace SharpFont
 			Reference = reference;
 		}
 
-		private Face(Library parent): base(IntPtr.Zero)
+		private Face(Library parent) : base(IntPtr.Zero)
 		{
 			childSizes = new List<FTSize>();
 
@@ -178,10 +178,7 @@ namespace SharpFont
 		/// </summary>
 		public bool IsDisposed
 		{
-			get
-			{
-				return disposed;
-			}
+			get { return disposed; }
 		}
 
 		/// <summary>
@@ -601,10 +598,7 @@ namespace SharpFont
 		/// </summary>
 		public bool HasHoriziontal
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.Horizontal) == FaceFlags.Horizontal;
-			}
+			get { return (FaceFlags & FaceFlags.Horizontal) == FaceFlags.Horizontal; }
 		}
 
 		/// <summary>
@@ -612,10 +606,7 @@ namespace SharpFont
 		/// </summary>
 		public bool HasVertical
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.Vertical) == FaceFlags.Vertical;
-			}
+			get { return (FaceFlags & FaceFlags.Vertical) == FaceFlags.Vertical; }
 		}
 
 		/// <summary>
@@ -624,10 +615,7 @@ namespace SharpFont
 		/// </summary>
 		public bool HasKerning
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.Kerning) == FaceFlags.Kerning;
-			}
+			get { return (FaceFlags & FaceFlags.Kerning) == FaceFlags.Kerning; }
 		}
 
 		/// <summary>
@@ -636,10 +624,7 @@ namespace SharpFont
 		/// </summary>
 		public bool IsScalable
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.Scalable) == FaceFlags.Scalable;
-			}
+			get { return (FaceFlags & FaceFlags.Scalable) == FaceFlags.Scalable; }
 		}
 
 		/// <summary><para>
@@ -650,10 +635,7 @@ namespace SharpFont
 		/// </para></summary>
 		public bool IsSfnt
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.Sfnt) == FaceFlags.Sfnt;
-			}
+			get { return (FaceFlags & FaceFlags.Sfnt) == FaceFlags.Sfnt; }
 		}
 
 		/// <summary>
@@ -662,10 +644,7 @@ namespace SharpFont
 		/// </summary>
 		public bool IsFixedWidth
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.FixedWidth) == FaceFlags.FixedWidth;
-			}
+			get { return (FaceFlags & FaceFlags.FixedWidth) == FaceFlags.FixedWidth; }
 		}
 
 		/// <summary>
@@ -674,10 +653,7 @@ namespace SharpFont
 		/// <see cref="Face.AvailableSizes"/>
 		public bool HasFixedSizes
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.FixedSizes) == FaceFlags.FixedSizes;
-			}
+			get { return (FaceFlags & FaceFlags.FixedSizes) == FaceFlags.FixedSizes; }
 		}
 
 		/// <summary>
@@ -686,10 +662,7 @@ namespace SharpFont
 		/// </summary>
 		public bool HasGlyphNames
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.GlyphNames) == FaceFlags.GlyphNames;
-			}
+			get { return (FaceFlags & FaceFlags.GlyphNames) == FaceFlags.GlyphNames; }
 		}
 
 		/// <summary>
@@ -698,10 +671,7 @@ namespace SharpFont
 		/// </summary>
 		public bool HasMultipleMasters
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.MultipleMasters) == FaceFlags.MultipleMasters;
-			}
+			get { return (FaceFlags & FaceFlags.MultipleMasters) == FaceFlags.MultipleMasters; }
 		}
 
 		/// <summary><para>
@@ -712,10 +682,7 @@ namespace SharpFont
 		/// </para></summary>
 		public bool IsCidKeyed
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.CidKeyed) == FaceFlags.CidKeyed;
-			}
+			get { return (FaceFlags & FaceFlags.CidKeyed) == FaceFlags.CidKeyed; }
 		}
 
 		/// <summary>
@@ -724,10 +691,7 @@ namespace SharpFont
 		/// </summary>
 		public bool IsTricky
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.Tricky) == FaceFlags.Tricky;
-			}
+			get { return (FaceFlags & FaceFlags.Tricky) == FaceFlags.Tricky; }
 		}
 
 		/// <summary>
@@ -735,10 +699,7 @@ namespace SharpFont
 		/// </summary>
 		public bool HasColor
 		{
-			get
-			{
-				return (FaceFlags & FaceFlags.Color) == FaceFlags.Color;
-			}
+			get { return (FaceFlags & FaceFlags.Color) == FaceFlags.Color; }
 		}
 
 		/// <summary>
@@ -909,12 +870,14 @@ namespace SharpFont
 		/// <param name="horizontalResolution">The horizontal resolution in dpi.</param>
 		/// <param name="verticalResolution">The vertical resolution in dpi.</param>
 		[CLSCompliant(false)]
-		public void SetCharSize(Fixed26Dot6 width, Fixed26Dot6 height, uint horizontalResolution, uint verticalResolution)
+		public void SetCharSize(Fixed26Dot6 width, Fixed26Dot6 height, uint horizontalResolution,
+			uint verticalResolution)
 		{
 			if (disposed)
 				throw new ObjectDisposedException("face", "Cannot access a disposed object.");
 
-			Error err = FT.FT_Set_Char_Size(Reference, (IntPtr)width.Value, (IntPtr)height.Value, horizontalResolution, verticalResolution);
+			Error err = FT.FT_Set_Char_Size(Reference, new PlatformLong(width.Value), new PlatformLong(height.Value),
+				horizontalResolution, verticalResolution);
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);
@@ -958,12 +921,12 @@ namespace SharpFont
 		/// </param>
 		/// <param name="target">The target to OR with the flags.</param>
 		[CLSCompliant(false)]
-		public void LoadGlyph(uint glyphIndex, LoadFlags flags, LoadTarget target)
+		public void LoadGlyph(uint glyphIndex, LoadFlags flags)
 		{
 			if (disposed)
 				throw new ObjectDisposedException("face", "Cannot access a disposed object.");
 
-			Error err = FT.FT_Load_Glyph(Reference, glyphIndex, (int)flags | (int)target);
+			Error err = FT.FT_Load_Glyph(Reference, glyphIndex, (int)flags);
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);
@@ -986,12 +949,12 @@ namespace SharpFont
 		/// </param>
 		/// <param name="target">The target to OR with the flags.</param>
 		[CLSCompliant(false)]
-		public void LoadChar(uint charCode, LoadFlags flags, LoadTarget target)
+		public void LoadChar(uint charCode, LoadFlags flags)
 		{
 			if (disposed)
 				throw new ObjectDisposedException("face", "Cannot access a disposed object.");
 
-			Error err = FT.FT_Load_Char(Reference, charCode, (int)flags | (int)target);
+			Error err = FT.FT_Load_Char(Reference, charCode, (int)flags);
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);
@@ -1969,7 +1932,8 @@ namespace SharpFont
 		/// <param name="supplement">The supplement.</param>
 		public void GetCidRegistryOrderingSupplement(out string registry, out string ordering, out int supplement)
 		{
-			Error err = FT.FT_Get_CID_Registry_Ordering_Supplement(Reference, out registry, out ordering, out supplement);
+			Error err = FT.FT_Get_CID_Registry_Ordering_Supplement(Reference, out registry, out ordering,
+				out supplement);
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);
@@ -2042,10 +2006,12 @@ namespace SharpFont
 		/// Same as ‘ametrics_x_scale’ but for the vertical direction. optional (parameter can be NULL).
 		/// </param>
 		[CLSCompliant(false)]
-		public void GetPfrMetrics(out uint outlineResolution, out uint metricsResolution, out Fixed16Dot16 metricsXScale, out Fixed16Dot16 metricsYScale)
+		public void GetPfrMetrics(out uint outlineResolution, out uint metricsResolution,
+			out Fixed16Dot16 metricsXScale, out Fixed16Dot16 metricsYScale)
 		{
 			IntPtr tmpXScale, tmpYScale;
-			Error err = FT.FT_Get_PFR_Metrics(Reference, out outlineResolution, out metricsResolution, out tmpXScale, out tmpYScale);
+			Error err = FT.FT_Get_PFR_Metrics(Reference, out outlineResolution, out metricsResolution, out tmpXScale,
+				out tmpYScale);
 
 			metricsXScale = Fixed16Dot16.FromRawValue((int)tmpXScale);
 			metricsYScale = Fixed16Dot16.FromRawValue((int)tmpYScale);
@@ -2257,9 +2223,11 @@ namespace SharpFont
 		/// <param name="gsubTable">A pointer to the GSUB table.</param>
 		/// <param name="jstfTable">A pointer to the JSTF table.</param>
 		[CLSCompliant(false)]
-		public void OpenTypeValidate(OpenTypeValidationFlags flags, out IntPtr baseTable, out IntPtr gdefTable, out IntPtr gposTable, out IntPtr gsubTable, out IntPtr jstfTable)
+		public void OpenTypeValidate(OpenTypeValidationFlags flags, out IntPtr baseTable, out IntPtr gdefTable,
+			out IntPtr gposTable, out IntPtr gsubTable, out IntPtr jstfTable)
 		{
-			Error err = FT.FT_OpenType_Validate(Reference, flags, out baseTable, out gdefTable, out gposTable, out gsubTable, out jstfTable);
+			Error err = FT.FT_OpenType_Validate(Reference, flags, out baseTable, out gdefTable, out gposTable,
+				out gsubTable, out jstfTable);
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);

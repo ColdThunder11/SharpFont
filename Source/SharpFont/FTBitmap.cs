@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*Copyright (c) 2012-2013, 2015-2016 Robert Rouhani <robert.rouhani@gmail.com>
 
 SharpFont based on Tao.FreeType, Copyright (c) 2003-2007 Tao Framework Team
@@ -20,11 +21,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
+
 #endregion
 
 using System;
 using System.Runtime.InteropServices;
-
 using SharpFont.Internal;
 
 namespace SharpFont
@@ -99,16 +100,13 @@ namespace SharpFont
 		/// </summary>
 		public bool IsDisposed
 		{
-			get
-			{
-				return disposed;
-			}
+			get { return disposed; }
 		}
 
 		/// <summary>
 		/// Gets the number of bitmap rows.
 		/// </summary>
-		public int Rows
+		public uint Rows
 		{
 			get
 			{
@@ -122,7 +120,7 @@ namespace SharpFont
 		/// <summary>
 		/// Gets the number of pixels in bitmap row.
 		/// </summary>
-		public int Width
+		public uint Width
 		{
 			get
 			{
@@ -323,7 +321,8 @@ namespace SharpFont
 			if (library == null)
 				throw new ArgumentNullException("library");
 
-			Error err = FT.FT_Bitmap_Embolden(library.Reference, Reference, (IntPtr)xStrength.Value, (IntPtr)yStrength.Value);
+			Error err = FT.FT_Bitmap_Embolden(library.Reference, Reference, (IntPtr)xStrength.Value,
+				(IntPtr)yStrength.Value);
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);

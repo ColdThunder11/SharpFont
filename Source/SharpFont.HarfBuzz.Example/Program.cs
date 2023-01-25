@@ -3,7 +3,7 @@
 
 using System;
 using System.Drawing;
-using SharpFont.Gdi;
+//using SharpFont.Gdi;
 
 namespace SharpFont.HarfBuzz.Example
 {
@@ -37,7 +37,7 @@ namespace SharpFont.HarfBuzz.Example
 				width += glyphPositions[i].xAdvance >> 6;
 			}
 
-			Bitmap bmp = new Bitmap(width, height);
+/*			Bitmap bmp = new Bitmap(width, height);
 			Graphics g = Graphics.FromImage(bmp);
 			g.Clear(Color.Gray);
 
@@ -59,7 +59,7 @@ namespace SharpFont.HarfBuzz.Example
 
 			g.Dispose();
 
-			bmp.Save("output.bmp");
+			bmp.Save("output.bmp");*/
 		}
 	}
 }

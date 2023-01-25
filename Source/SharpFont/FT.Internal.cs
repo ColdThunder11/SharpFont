@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*Copyright (c) 2012-2016 Robert Rouhani <robert.rouhani@gmail.com>
 
 SharpFont based on Tao.FreeType, Copyright (c) 2003-2007 Tao Framework Team
@@ -20,16 +21,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
+
 #endregion
 
 using System;
 using System.Runtime.InteropServices;
-
 using SharpFont.Cache;
 using SharpFont.Internal;
 using SharpFont.PostScript;
 using SharpFont.TrueType;
 using System.Reflection;
+
 
 namespace SharpFont
 {
@@ -47,7 +49,7 @@ namespace SharpFont
 		/// Defines the location of the FreeType DLL. Update SharpFont.dll.config if you change this!
 		/// </summary>
 		/// TODO: Use the same name for all platforms.
-	    private const string FreetypeDll = "freetype6";
+		private const string FreetypeDll = "freetyped";
 
 		/// <summary>
 		/// Defines the calling convention for P/Invoking the native freetype methods.
@@ -70,7 +72,8 @@ namespace SharpFont
 					return IntPtr.Zero;
 				}
 
-				if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
+				    RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
 				{
 					return NativeLibrary.Load("libfreetype.so.6", typeof(FT).Assembly, path);
 				}
@@ -110,16 +113,19 @@ namespace SharpFont
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Done_FreeType(IntPtr library);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
 		internal static extern Error FT_New_Face(IntPtr library, string filepathname, int face_index, out IntPtr aface);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_New_Memory_Face(IntPtr library, IntPtr file_base, int file_size, int face_index, out IntPtr aface);
+		internal static extern Error FT_New_Memory_Face(IntPtr library, IntPtr file_base, int file_size, int face_index,
+			out IntPtr aface);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Open_Face(IntPtr library, IntPtr args, int face_index, out IntPtr aface);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
 		internal static extern Error FT_Attach_File(IntPtr face, string filepathname);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
@@ -138,7 +144,8 @@ namespace SharpFont
 		internal static extern Error FT_Request_Size(IntPtr face, IntPtr req);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Set_Char_Size(IntPtr face, IntPtr char_width, IntPtr char_height, uint horz_resolution, uint vert_resolution);
+		internal static extern Error FT_Set_Char_Size(IntPtr face, PlatformLong char_width, PlatformLong char_height,
+			uint horz_resolution, uint vert_resolution);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Set_Pixel_Sizes(IntPtr face, uint pixel_width, uint pixel_height);
@@ -156,10 +163,12 @@ namespace SharpFont
 		internal static extern Error FT_Render_Glyph(IntPtr slot, RenderMode render_mode);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Get_Kerning(IntPtr face, uint left_glyph, uint right_glyph, uint kern_mode, out FTVector26Dot6 akerning);
+		internal static extern Error FT_Get_Kerning(IntPtr face, uint left_glyph, uint right_glyph, uint kern_mode,
+			out FTVector26Dot6 akerning);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Get_Track_Kerning(IntPtr face, IntPtr point_size, int degree, out IntPtr akerning);
+		internal static extern Error FT_Get_Track_Kerning(IntPtr face, IntPtr point_size, int degree,
+			out IntPtr akerning);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Get_Glyph_Name(IntPtr face, uint glyph_index, IntPtr buffer, uint buffer_max);
@@ -189,7 +198,8 @@ namespace SharpFont
 		internal static extern uint FT_Get_Name_Index(IntPtr face, IntPtr glyph_name);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Get_SubGlyph_Info(IntPtr glyph, uint sub_index, out int p_index, out SubGlyphFlags p_flags, out int p_arg1, out int p_arg2, out FTMatrix p_transform);
+		internal static extern Error FT_Get_SubGlyph_Info(IntPtr glyph, uint sub_index, out int p_index,
+			out SubGlyphFlags p_flags, out int p_arg1, out int p_arg2, out FTMatrix p_transform);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern EmbeddingTypes FT_Get_FSType_Flags(IntPtr face);
@@ -230,7 +240,8 @@ namespace SharpFont
 		internal static extern void FT_Glyph_Get_CBox(IntPtr glyph, GlyphBBoxMode bbox_mode, out BBox acbox);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Glyph_To_Bitmap(ref IntPtr the_glyph, RenderMode render_mode, ref FTVector26Dot6 origin, [MarshalAs(UnmanagedType.U1)] bool destroy);
+		internal static extern Error FT_Glyph_To_Bitmap(ref IntPtr the_glyph, RenderMode render_mode,
+			ref FTVector26Dot6 origin, [MarshalAs(UnmanagedType.U1)] bool destroy);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern void FT_Done_Glyph(IntPtr glyph);
@@ -240,22 +251,31 @@ namespace SharpFont
 		#region Mac Specific Interface - check for macOS before calling these methods.
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_New_Face_From_FOND(IntPtr library, IntPtr fond, int face_index, out IntPtr aface);
+		internal static extern Error FT_New_Face_From_FOND(IntPtr library, IntPtr fond, int face_index,
+			out IntPtr aface);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
 		internal static extern Error FT_GetFile_From_Mac_Name(string fontName, out IntPtr pathSpec, out int face_index);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-		internal static extern Error FT_GetFile_From_Mac_ATS_Name(string fontName, out IntPtr pathSpec, out int face_index);
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
+		internal static extern Error FT_GetFile_From_Mac_ATS_Name(string fontName, out IntPtr pathSpec,
+			out int face_index);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-		internal static extern Error FT_GetFilePath_From_Mac_ATS_Name(string fontName, IntPtr path, int maxPathSize, out int face_index);
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
+		internal static extern Error FT_GetFilePath_From_Mac_ATS_Name(string fontName, IntPtr path, int maxPathSize,
+			out int face_index);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_New_Face_From_FSSpec(IntPtr library, IntPtr spec, int face_index, out IntPtr aface);
+		internal static extern Error FT_New_Face_From_FSSpec(IntPtr library, IntPtr spec, int face_index,
+			out IntPtr aface);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_New_Face_From_FSRef(IntPtr library, IntPtr @ref, int face_index, out IntPtr aface);
+		internal static extern Error FT_New_Face_From_FSRef(IntPtr library, IntPtr @ref, int face_index,
+			out IntPtr aface);
+
 		#endregion
 
 		#region Size Management
@@ -304,10 +324,12 @@ namespace SharpFont
 
 		//TODO find FT_TRUETYPE_TAGS_H and create an enum for "tag"
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Load_Sfnt_Table(IntPtr face, uint tag, int offset, IntPtr buffer, ref uint length);
+		internal static extern Error FT_Load_Sfnt_Table(IntPtr face, uint tag, int offset, IntPtr buffer,
+			ref uint length);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static unsafe extern Error FT_Sfnt_Table_Info(IntPtr face, uint table_index, SfntTag* tag, out uint length);
+		internal static unsafe extern Error FT_Sfnt_Table_Info(IntPtr face, uint table_index, SfntTag* tag,
+			out uint length);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern uint FT_Get_CMap_Language_ID(IntPtr charmap);
@@ -327,10 +349,12 @@ namespace SharpFont
 		internal static extern Error FT_Get_PS_Font_Info(IntPtr face, out PostScript.Internal.FontInfoRec afont_info);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Get_PS_Font_Private(IntPtr face, out PostScript.Internal.PrivateRec afont_private);
+		internal static extern Error FT_Get_PS_Font_Private(IntPtr face,
+			out PostScript.Internal.PrivateRec afont_private);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern int FT_Get_PS_Font_Value(IntPtr face, DictionaryKeys key, uint idx, ref IntPtr value, int value_len);
+		internal static extern int FT_Get_PS_Font_Value(IntPtr face, DictionaryKeys key, uint idx, ref IntPtr value,
+			int value_len);
 
 		#endregion
 
@@ -346,18 +370,23 @@ namespace SharpFont
 
 		#region BDF and PCF Files
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-		internal static extern Error FT_Get_BDF_Charset_ID(IntPtr face, out string acharset_encoding, out string acharset_registry);
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
+		internal static extern Error FT_Get_BDF_Charset_ID(IntPtr face, out string acharset_encoding,
+			out string acharset_registry);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
 		internal static extern Error FT_Get_BDF_Property(IntPtr face, string prop_name, out IntPtr aproperty);
 
 		#endregion
 
 		#region CID Fonts
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-		internal static extern Error FT_Get_CID_Registry_Ordering_Supplement(IntPtr face, out string registry, out string ordering, out int aproperty);
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
+		internal static extern Error FT_Get_CID_Registry_Ordering_Supplement(IntPtr face, out string registry,
+			out string ordering, out int aproperty);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Get_CID_Is_Internally_CID_Keyed(IntPtr face, out byte is_cid);
@@ -370,7 +399,8 @@ namespace SharpFont
 		#region PFR Fonts
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Get_PFR_Metrics(IntPtr face, out uint aoutline_resolution, out uint ametrics_resolution, out IntPtr ametrics_x_scale, out IntPtr ametrics_y_scale);
+		internal static extern Error FT_Get_PFR_Metrics(IntPtr face, out uint aoutline_resolution,
+			out uint ametrics_resolution, out IntPtr ametrics_x_scale, out IntPtr ametrics_y_scale);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Get_PFR_Kerning(IntPtr face, uint left, uint right, out FTVector avector);
@@ -494,10 +524,12 @@ namespace SharpFont
 		#region Outline Processing
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Outline_New(IntPtr library, uint numPoints, int numContours, out IntPtr anoutline);
+		internal static extern Error FT_Outline_New(IntPtr library, uint numPoints, int numContours,
+			out IntPtr anoutline);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Outline_New_Internal(IntPtr memory, uint numPoints, int numContours, out IntPtr anoutline);
+		internal static extern Error FT_Outline_New_Internal(IntPtr memory, uint numPoints, int numContours,
+			out IntPtr anoutline);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Outline_Done(IntPtr library, IntPtr outline);
@@ -530,7 +562,8 @@ namespace SharpFont
 		internal static extern Error FT_Outline_Get_BBox(IntPtr outline, out BBox abbox);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Outline_Decompose(IntPtr outline, ref OutlineFuncsRec func_interface, IntPtr user);
+		internal static extern Error FT_Outline_Decompose(IntPtr outline, ref OutlineFuncsRec func_interface,
+			IntPtr user);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern void FT_Outline_Get_CBox(IntPtr outline, out BBox acbox);
@@ -549,10 +582,12 @@ namespace SharpFont
 		#region Quick retrieval of advance values
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Get_Advance(IntPtr face, uint gIndex, LoadFlags load_flags, out IntPtr padvance);
+		internal static extern Error
+			FT_Get_Advance(IntPtr face, uint gIndex, LoadFlags load_flags, out IntPtr padvance);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Get_Advances(IntPtr face, uint start, uint count, LoadFlags load_flags, out IntPtr padvance);
+		internal static extern Error FT_Get_Advances(IntPtr face, uint start, uint count, LoadFlags load_flags,
+			out IntPtr padvance);
 
 		#endregion
 
@@ -565,7 +600,8 @@ namespace SharpFont
 		internal static extern Error FT_Bitmap_Copy(IntPtr library, IntPtr source, IntPtr target);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Bitmap_Embolden(IntPtr library, IntPtr bitmap, IntPtr xStrength, IntPtr yStrength);
+		internal static extern Error FT_Bitmap_Embolden(IntPtr library, IntPtr bitmap, IntPtr xStrength,
+			IntPtr yStrength);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Bitmap_Convert(IntPtr library, IntPtr source, IntPtr target, int alignment);
@@ -590,16 +626,19 @@ namespace SharpFont
 		internal static extern Error FT_Stroker_New(IntPtr library, out IntPtr astroker);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern void FT_Stroker_Set(IntPtr stroker, int radius, StrokerLineCap line_cap, StrokerLineJoin line_join, IntPtr miter_limit);
+		internal static extern void FT_Stroker_Set(IntPtr stroker, int radius, StrokerLineCap line_cap,
+			StrokerLineJoin line_join, IntPtr miter_limit);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern void FT_Stroker_Rewind(IntPtr stroker);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Stroker_ParseOutline(IntPtr stroker, IntPtr outline, [MarshalAs(UnmanagedType.U1)] bool opened);
+		internal static extern Error FT_Stroker_ParseOutline(IntPtr stroker, IntPtr outline,
+			[MarshalAs(UnmanagedType.U1)] bool opened);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Stroker_BeginSubPath(IntPtr stroker, ref FTVector to, [MarshalAs(UnmanagedType.U1)] bool open);
+		internal static extern Error FT_Stroker_BeginSubPath(IntPtr stroker, ref FTVector to,
+			[MarshalAs(UnmanagedType.U1)] bool open);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Stroker_EndSubPath(IntPtr stroker);
@@ -611,10 +650,12 @@ namespace SharpFont
 		internal static extern Error FT_Stroker_ConicTo(IntPtr stroker, ref FTVector control, ref FTVector to);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Stroker_CubicTo(IntPtr stroker, ref FTVector control1, ref FTVector control2, ref FTVector to);
+		internal static extern Error FT_Stroker_CubicTo(IntPtr stroker, ref FTVector control1, ref FTVector control2,
+			ref FTVector to);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Stroker_GetBorderCounts(IntPtr stroker, StrokerBorder border, out uint anum_points, out uint anum_contours);
+		internal static extern Error FT_Stroker_GetBorderCounts(IntPtr stroker, StrokerBorder border,
+			out uint anum_points, out uint anum_contours);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern void FT_Stroker_ExportBorder(IntPtr stroker, StrokerBorder border, IntPtr outline);
@@ -629,10 +670,12 @@ namespace SharpFont
 		internal static extern void FT_Stroker_Done(IntPtr stroker);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Glyph_Stroke(ref IntPtr pglyph, IntPtr stoker, [MarshalAs(UnmanagedType.U1)] bool destroy);
+		internal static extern Error FT_Glyph_Stroke(ref IntPtr pglyph, IntPtr stoker,
+			[MarshalAs(UnmanagedType.U1)] bool destroy);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Glyph_StrokeBorder(ref IntPtr pglyph, IntPtr stoker, [MarshalAs(UnmanagedType.U1)] bool inside, [MarshalAs(UnmanagedType.U1)] bool destroy);
+		internal static extern Error FT_Glyph_StrokeBorder(ref IntPtr pglyph, IntPtr stoker,
+			[MarshalAs(UnmanagedType.U1)] bool inside, [MarshalAs(UnmanagedType.U1)] bool destroy);
 
 		#endregion
 
@@ -641,17 +684,22 @@ namespace SharpFont
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Add_Module(IntPtr library, IntPtr clazz);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
 		internal static extern IntPtr FT_Get_Module(IntPtr library, string module_name);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Remove_Module(IntPtr library, IntPtr module);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-		internal static extern Error FT_Property_Set(IntPtr library, string module_name, string property_name, IntPtr value);
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
+		internal static extern Error FT_Property_Set(IntPtr library, string module_name, string property_name,
+			IntPtr value);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-		internal static extern Error FT_Property_Get(IntPtr library, string module_name, string property_name, IntPtr value);
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+			ThrowOnUnmappableChar = true)]
+		internal static extern Error FT_Property_Get(IntPtr library, string module_name, string property_name,
+			IntPtr value);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Reference_Library(IntPtr library);
@@ -673,7 +721,8 @@ namespace SharpFont
 		internal static extern IntPtr FT_Get_Renderer(IntPtr library, GlyphFormat format);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Set_Renderer(IntPtr library, IntPtr renderer, uint num_params, IntPtr parameters);
+		internal static extern Error FT_Set_Renderer(IntPtr library, IntPtr renderer, uint num_params,
+			IntPtr parameters);
 
 		#endregion
 
@@ -683,7 +732,8 @@ namespace SharpFont
 		internal static extern Error FT_Stream_OpenGzip(IntPtr stream, IntPtr source);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Gzip_Uncompress(IntPtr memory, IntPtr output, ref IntPtr output_len, IntPtr input, IntPtr input_len);
+		internal static extern Error FT_Gzip_Uncompress(IntPtr memory, IntPtr output, ref IntPtr output_len,
+			IntPtr input, IntPtr input_len);
 
 		#endregion
 
@@ -716,7 +766,8 @@ namespace SharpFont
 		#region Caching Sub-system
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FTC_Manager_New(IntPtr library, uint max_faces, uint max_sizes, ulong maxBytes, FaceRequester requester, IntPtr req_data, out IntPtr amanager);
+		internal static extern Error FTC_Manager_New(IntPtr library, uint max_faces, uint max_sizes, ulong maxBytes,
+			FaceRequester requester, IntPtr req_data, out IntPtr amanager);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern void FTC_Manager_Reset(IntPtr manager);
@@ -746,19 +797,23 @@ namespace SharpFont
 		internal static extern Error FTC_ImageCache_New(IntPtr manager, out IntPtr acache);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FTC_ImageCache_Lookup(IntPtr cache, IntPtr type, uint gindex, out IntPtr aglyph, out IntPtr anode);
+		internal static extern Error FTC_ImageCache_Lookup(IntPtr cache, IntPtr type, uint gindex, out IntPtr aglyph,
+			out IntPtr anode);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FTC_ImageCache_LookupScaler(IntPtr cache, IntPtr scaler, LoadFlags load_flags, uint gindex, out IntPtr aglyph, out IntPtr anode);
+		internal static extern Error FTC_ImageCache_LookupScaler(IntPtr cache, IntPtr scaler, LoadFlags load_flags,
+			uint gindex, out IntPtr aglyph, out IntPtr anode);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FTC_SBitCache_New(IntPtr manager, out IntPtr acache);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FTC_SBitCache_Lookup(IntPtr cache, IntPtr type, uint gindex, out IntPtr sbit, out IntPtr anode);
+		internal static extern Error FTC_SBitCache_Lookup(IntPtr cache, IntPtr type, uint gindex, out IntPtr sbit,
+			out IntPtr anode);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FTC_SBitCache_LookupScaler(IntPtr cache, IntPtr scaler, LoadFlags load_flags, uint gindex, out IntPtr sbit, out IntPtr anode);
+		internal static extern Error FTC_SBitCache_LookupScaler(IntPtr cache, IntPtr scaler, LoadFlags load_flags,
+			uint gindex, out IntPtr sbit, out IntPtr anode);
 
 		#endregion
 
@@ -767,7 +822,9 @@ namespace SharpFont
 		#region OpenType Validation
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_OpenType_Validate(IntPtr face, OpenTypeValidationFlags validation_flags, out IntPtr base_table, out IntPtr gdef_table, out IntPtr gpos_table, out IntPtr gsub_table, out IntPtr jsft_table);
+		internal static extern Error FT_OpenType_Validate(IntPtr face, OpenTypeValidationFlags validation_flags,
+			out IntPtr base_table, out IntPtr gdef_table, out IntPtr gpos_table, out IntPtr gsub_table,
+			out IntPtr jsft_table);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern void FT_OpenType_Free(IntPtr face, IntPtr table);
@@ -784,13 +841,15 @@ namespace SharpFont
 		#region TrueTypeGX/AAT Validation
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_TrueTypeGX_Validate(IntPtr face, TrueTypeValidationFlags validation_flags, byte[][] tables, uint tableLength);
+		internal static extern Error FT_TrueTypeGX_Validate(IntPtr face, TrueTypeValidationFlags validation_flags,
+			byte[][] tables, uint tableLength);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_TrueTypeGX_Free(IntPtr face, IntPtr table);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_ClassicKern_Validate(IntPtr face, ClassicKernValidationFlags validation_flags, out IntPtr ckern_table);
+		internal static extern Error FT_ClassicKern_Validate(IntPtr face, ClassicKernValidationFlags validation_flags,
+			out IntPtr ckern_table);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_ClassicKern_Free(IntPtr face, IntPtr table);

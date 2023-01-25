@@ -101,10 +101,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharpFont.GDI\SharpFont.Gdi.csproj">
-      <Project>{544493f1-3a5c-4576-975b-06b63ce0175f}</Project>
-      <Name>SharpFont.Gdi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SharpFont\SharpFont.csproj">
       <Project>{ecd55e3b-1139-4f0d-af63-3f471aaf6e91}</Project>
       <Name>SharpFont</Name>

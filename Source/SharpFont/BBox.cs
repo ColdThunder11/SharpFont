@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*Copyright (c) 2012-2015 Robert Rouhani <robert.rouhani@gmail.com>
 
 SharpFont based on Tao.FreeType, Copyright (c) 2003-2007 Tao Framework Team
@@ -20,13 +21,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
+
 #endregion
 
 using System;
 using System.Runtime.InteropServices;
+//using FT_Long = System.IntPtr;
+//using FT_ULong = System.UIntPtr;
+using FT_Long = System.Int32;
+using FT_ULong = System.UInt32;
 
-using FT_Long = System.IntPtr;
-using FT_ULong = System.UIntPtr;
 
 namespace SharpFont
 {
@@ -55,10 +59,10 @@ namespace SharpFont
 		/// <param name="top">The upper bound.</param>
 		public BBox(int left, int bottom, int right, int top)
 		{
-			xMin = (IntPtr)left;
-			yMin = (IntPtr)bottom;
-			xMax = (IntPtr)right;
-			yMax = (IntPtr)top;
+			xMin = left;
+			yMin = bottom;
+			xMax = right;
+			yMax = top;
 		}
 
 		#endregion
@@ -70,10 +74,7 @@ namespace SharpFont
 		/// </summary>
 		public int Left
 		{
-			get
-			{
-				return (int)xMin;
-			}
+			get { return (int)xMin; }
 		}
 
 		/// <summary>
@@ -81,10 +82,7 @@ namespace SharpFont
 		/// </summary>
 		public int Bottom
 		{
-			get
-			{
-				return (int)yMin;
-			}
+			get { return (int)yMin; }
 		}
 
 		/// <summary>
@@ -92,10 +90,7 @@ namespace SharpFont
 		/// </summary>
 		public int Right
 		{
-			get
-			{
-				return (int)xMax;
-			}
+			get { return (int)xMax; }
 		}
 
 		/// <summary>
@@ -103,10 +98,7 @@ namespace SharpFont
 		/// </summary>
 		public int Top
 		{
-			get
-			{
-				return (int)yMax;
-			}
+			get { return (int)yMax; }
 		}
 
 		#endregion

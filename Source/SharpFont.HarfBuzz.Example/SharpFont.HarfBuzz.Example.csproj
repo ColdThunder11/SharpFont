@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-		<TargetFrameworks>net45;netcoreapp3.0</TargetFrameworks>
+		<TargetFrameworks>netcoreapp6.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
@@ -28,7 +28,6 @@
     </Content>
   </ItemGroup>-->
   <ItemGroup>
-    <ProjectReference Include="..\SharpFont.GDI\SharpFont.Gdi.csproj" />
     <ProjectReference Include="..\SharpFont\SharpFont.csproj" />
     <ProjectReference Include="..\SharpFont.HarfBuzz\SharpFont.HarfBuzz.csproj" />
   </ItemGroup>

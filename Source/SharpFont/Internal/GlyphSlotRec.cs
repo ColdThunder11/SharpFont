@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*Copyright (c) 2012-2015 Robert Rouhani <robert.rouhani@gmail.com>
 
 SharpFont based on Tao.FreeType, Copyright (c) 2003-2007 Tao Framework Team
@@ -20,13 +21,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
+
 #endregion
 
 using System;
 using System.Runtime.InteropServices;
-
-using FT_Long = System.IntPtr;
-using FT_ULong = System.UIntPtr;
+using FT_Long = System.Int32;
+using FT_ULong = System.UInt32;
 
 namespace SharpFont.Internal
 {
@@ -42,7 +43,7 @@ namespace SharpFont.Internal
 		internal IntPtr library;
 		internal IntPtr face;
 		internal IntPtr next;
-		internal uint reserved;
+		internal uint glyph_index;
 		internal GenericRec generic;
 
 		internal GlyphMetricsRec metrics;

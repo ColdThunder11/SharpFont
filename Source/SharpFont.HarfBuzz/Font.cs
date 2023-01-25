@@ -8,21 +8,32 @@ namespace SharpFont.HarfBuzz
 	public class Font
 	{
 		#region Members
+
 		private IntPtr reference;
+
 		#endregion
 
 		#region Constructors
+
 		public static Font FromFTFace(Face face)
 		{
-			return new Font { reference = HB.hb_ft_font_create(face.Reference, IntPtr.Zero) };
+			//Use hb_ft_font_create_referenced to auto manage FT_Reference_Face and FT_Done_Face
+			return new Font { reference = HB.hb_ft_font_create_referenced(face.Reference) };
 		}
+
 		#endregion
 
 		#region Properties
-		internal IntPtr Reference { get { return reference; } }
+
+		internal IntPtr Reference
+		{
+			get { return reference; }
+		}
+
 		#endregion
 
 		#region Methods
+
 		#endregion
 	}
 }

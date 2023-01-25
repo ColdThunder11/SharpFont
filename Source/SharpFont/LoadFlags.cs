@@ -23,9 +23,35 @@ SOFTWARE.*/
 #endregion
 
 using System;
+using System.Runtime.CompilerServices;
 
 namespace SharpFont
-{
+{   /*FT_LOAD_XXX¶
+	Defined in FT_FREETYPE_H (freetype/freetype.h).
+
+
+	#define FT_LOAD_DEFAULT                      0x0
+	#define FT_LOAD_NO_SCALE                     ( 1L << 0  )
+	#define FT_LOAD_NO_HINTING                   ( 1L << 1  )
+	#define FT_LOAD_RENDER                       ( 1L << 2  )
+	#define FT_LOAD_NO_BITMAP                    ( 1L << 3  )
+	#define FT_LOAD_VERTICAL_LAYOUT              ( 1L << 4  )
+	#define FT_LOAD_FORCE_AUTOHINT               ( 1L << 5  )
+	#define FT_LOAD_CROP_BITMAP                  ( 1L << 6  )
+	#define FT_LOAD_PEDANTIC                     ( 1L << 7  )
+	#define FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH  ( 1L << 9  )
+	#define FT_LOAD_NO_RECURSE                   ( 1L << 10 )
+	#define FT_LOAD_IGNORE_TRANSFORM             ( 1L << 11 )
+	#define FT_LOAD_MONOCHROME                   ( 1L << 12 )
+	#define FT_LOAD_LINEAR_DESIGN                ( 1L << 13 )
+	#define FT_LOAD_SBITS_ONLY                   ( 1L << 14 )
+	#define FT_LOAD_NO_AUTOHINT                  ( 1L << 15 )
+	  // Bits 16-19 are used by `FT_LOAD_TARGET_` 
+	#define FT_LOAD_COLOR                        ( 1L << 20 )
+	#define FT_LOAD_COMPUTE_METRICS              ( 1L << 21 )
+	#define FT_LOAD_BITMAP_METRICS_ONLY          ( 1L << 22 )
+	A list of bit field constants for FT_Load_Glyph to indicate what kind of operations to perform during glyph loading.
+	*/
 	/// <summary>
 	/// A list of bit-field constants used with <see cref="Face.LoadGlyph"/> to indicate what kind of operations to
 	/// perform during glyph loading.
@@ -44,7 +70,7 @@ namespace SharpFont
 	/// </para></remarks>
 	[Flags]
 	[CLSCompliant(false)]
-	public enum LoadFlags : uint
+	public enum LoadFlags : Int32
 	{
 		/// <summary>
 		/// Corresponding to 0, this value is used as the default glyph load operation. In this case, the following
@@ -155,6 +181,11 @@ namespace SharpFont
 		/// kept in font units. See <see cref="GlyphSlot"/> for details.
 		/// </summary>
 		LinearDesign = 0x002000,
+
+		/// <summary>
+		/// This is the opposite of FT_LOAD_NO_BITMAP, more or less: FT_Load_Glyph returns FT_Err_Invalid_Argument if the face contains a bitmap strike for the given size (or the strike selected by FT_Select_Size) but there is no glyph in the strike.
+		/// </summary>
+		SbitsOnly = 0x004000,
 
 		/// <summary>
 		/// Disable auto-hinter. See also the note below.

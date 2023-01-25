@@ -8,7 +8,8 @@ namespace SharpFont.HarfBuzz
 {
 	public static partial class HB
 	{
-		private const string HarfBuzzDll = "libharfbuzz-0.dll";
+		// MSVC's build of harfbuzz named harfbuzz.dll
+		private const string HarfBuzzDll = "harfbuzz.dll";
 
 		private const CallingConvention CallConvention = CallingConvention.Cdecl;
 
@@ -78,6 +79,9 @@ namespace SharpFont.HarfBuzz
 		//TODO get proper delegate type for "destroy" parameters
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern IntPtr hb_ft_face_create(IntPtr ft_face, IntPtr destroy);
+
+		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
+		internal static extern IntPtr hb_ft_font_create_referenced(IntPtr ft_face);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern IntPtr hb_ft_face_create_cached(IntPtr ft_face);
@@ -190,7 +194,8 @@ namespace SharpFont.HarfBuzz
 		internal static extern void hb_buffer_add_utf32();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_buffer_add_utf8(IntPtr buffer, byte[] text, int text_length, int item_offset, int item_length);
+		internal static extern void hb_buffer_add_utf8(IntPtr buffer, byte[] text, int text_length, int item_offset,
+			int item_length);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern void hb_buffer_allocation_successful();
@@ -733,7 +738,7 @@ namespace SharpFont.HarfBuzz
 		internal static extern void hb_set_union();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_shape(IntPtr font, IntPtr buffer, IntPtr features, int num_features);
+		internal static extern void hb_shape(IntPtr font, IntPtr buffer, IntPtr features, uint num_features);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern void hb_shape_full();
