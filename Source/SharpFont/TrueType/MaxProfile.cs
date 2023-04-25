@@ -63,10 +63,10 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.version;
+				return (int)rec.version.Value;
 			}
 		}
-		
+
 		/// <summary>
 		/// Gets the number of glyphs in this TrueType font.
 		/// </summary>

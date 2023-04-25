@@ -258,7 +258,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.ulUnicodeRange1;
+				return (uint)rec.ulUnicodeRange1.Value;
 			}
 		}
 
@@ -270,7 +270,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.ulUnicodeRange2;
+				return (uint)rec.ulUnicodeRange2.Value;
 			}
 		}
 
@@ -282,7 +282,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.ulUnicodeRange3;
+				return (uint)rec.ulUnicodeRange3.Value;
 			}
 		}
 
@@ -294,7 +294,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.ulUnicodeRange4;
+				return (uint)rec.ulUnicodeRange4.Value;
 			}
 		}
 
@@ -346,7 +346,7 @@ namespace SharpFont.TrueType
 				return rec.usLastCharIndex;
 			}
 		}
-		
+
 		/// <summary>
 		/// The ascender value, useful for computing a default line spacing in conjunction with unitsPerEm.
 		/// </summary>
@@ -357,7 +357,7 @@ namespace SharpFont.TrueType
 				return rec.sTypoAscender;
 			}
 		}
-		
+
 		/// <summary>
 		/// The descender value, useful for computing a default line spacing in conjunction with unitsPerEm.
 		/// </summary>
@@ -368,7 +368,7 @@ namespace SharpFont.TrueType
 				return rec.sTypoDescender;
 			}
 		}
-		
+
 		/// <summary>
 		/// The line gap value, useful for computing a default line spacing in conjunction with unitsPerEm.
 		/// </summary>
@@ -412,7 +412,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.ulCodePageRange1;
+				return (uint)rec.ulCodePageRange1.Value;
 			}
 		}
 
@@ -424,7 +424,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.ulUnicodeRange1;
+				return (uint)rec.ulUnicodeRange1.Value;
 			}
 		}
 
@@ -438,7 +438,7 @@ namespace SharpFont.TrueType
 				return rec.sxHeight;
 			}
 		}
-		
+
 		/// <summary>
 		/// The approximate height of uppercase letters relative to the baseline.
 		/// </summary>

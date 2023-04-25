@@ -84,7 +84,7 @@ namespace SharpFont
 				return rec.@base;
 			}
 		}
-		
+
 		/// <summary>
 		/// Gets the stream size in bytes.
 		/// </summary>
@@ -93,7 +93,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return (uint)rec.size;
+				return (uint)rec.size.Value;
 			}
 		}
 
@@ -105,7 +105,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return (uint)rec.pos;
+				return (uint)rec.pos.Value;
 			}
 		}
 

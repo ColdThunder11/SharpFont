@@ -155,7 +155,7 @@ namespace SharpFont.Fnt
 		{
 			get
 			{
-				return (uint)rec.file_size;
+				return (uint)rec.file_size.Value;
 			}
 		}
 
@@ -445,7 +445,7 @@ namespace SharpFont.Fnt
 		{
 			get
 			{
-				return (uint)rec.device_offset;
+				return (uint)rec.device_offset.Value;
 			}
 		}
 
@@ -458,7 +458,7 @@ namespace SharpFont.Fnt
 		{
 			get
 			{
-				return (uint)rec.face_name_offset;
+				return (uint)rec.face_name_offset.Value;
 			}
 		}
 
@@ -471,7 +471,7 @@ namespace SharpFont.Fnt
 		{
 			get
 			{
-				return (uint)rec.bits_pointer;
+				return (uint)rec.bits_pointer.Value;
 			}
 		}
 
@@ -484,7 +484,7 @@ namespace SharpFont.Fnt
 		{
 			get
 			{
-				return (uint)rec.bits_offset;
+				return (uint)rec.bits_offset.Value;
 			}
 		}
 
@@ -507,7 +507,7 @@ namespace SharpFont.Fnt
 		{
 			get
 			{
-				return (Flags)rec.flags;
+				return (Flags)rec.flags.Value;
 			}
 		}
 
@@ -572,7 +572,7 @@ namespace SharpFont.Fnt
 			{
 				uint[] reserved1 = new uint[rec.reserved1.Length];
 				for (int i = 0; i < reserved1.Length; i++)
-					reserved1[i] = (uint)rec.reserved1[i];
+					reserved1[i] = (uint)rec.reserved1[i].Value;
 
 				return reserved1;
 			}

@@ -36,7 +36,7 @@ namespace SharpFont
 	/// </summary>
 	/// <remarks>
 	/// If not disabled with <see cref="LoadFlags.NoHinting"/>, the values represent dimensions of the hinted glyph (in
-	/// case hinting is applicable). 
+	/// case hinting is applicable).
 	/// </remarks>
 	public sealed class GlyphMetrics
 	{
@@ -71,7 +71,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.width);
+				return Fixed26Dot6.FromRawValue((int)rec.width.Value);
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.height);
+				return Fixed26Dot6.FromRawValue((int)rec.height.Value);
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.horiBearingX);
+				return Fixed26Dot6.FromRawValue((int)rec.horiBearingX.Value);
 			}
 		}
 
@@ -107,7 +107,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.horiBearingY);
+				return Fixed26Dot6.FromRawValue((int)rec.horiBearingY.Value);
 			}
 		}
 
@@ -119,7 +119,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.horiAdvance);
+				return Fixed26Dot6.FromRawValue((int)rec.horiAdvance.Value);
 			}
 		}
 
@@ -131,7 +131,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.vertBearingX);
+				return Fixed26Dot6.FromRawValue((int)rec.vertBearingX.Value);
 			}
 		}
 
@@ -144,7 +144,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.vertBearingY);
+				return Fixed26Dot6.FromRawValue((int)rec.vertBearingY.Value);
 			}
 		}
 
@@ -157,7 +157,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.vertAdvance);
+				return Fixed26Dot6.FromRawValue((int)rec.vertAdvance.Value);
 			}
 		}
 

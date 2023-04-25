@@ -98,7 +98,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed16Dot16.FromRawValue((int)rec.x_scale);
+				return Fixed16Dot16.FromRawValue((int)rec.x_scale.Value);
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed16Dot16.FromRawValue((int)rec.y_scale);
+				return Fixed16Dot16.FromRawValue((int)rec.y_scale.Value);
 			}
 		}
 
@@ -122,7 +122,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.ascender);
+				return Fixed26Dot6.FromRawValue((int)rec.ascender.Value);
 			}
 		}
 
@@ -134,7 +134,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.descender);
+				return Fixed26Dot6.FromRawValue((int)rec.descender.Value);
 			}
 		}
 
@@ -146,7 +146,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.height);
+				return Fixed26Dot6.FromRawValue((int)rec.height.Value);
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.max_advance);
+				return Fixed26Dot6.FromRawValue((int)rec.max_advance.Value);
 			}
 		}
 

@@ -192,7 +192,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.Table_Version;
+				return (int)rec.Table_Version.Value;
 			}
 		}
 
@@ -203,7 +203,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.Font_Revision;
+				return (int)rec.Font_Revision.Value;
 			}
 		}
 
@@ -214,7 +214,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.Checksum_Adjust;
+				return (int)rec.Checksum_Adjust.Value;
 			}
 		}
 
@@ -225,7 +225,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.Magic_Number;
+				return (int)rec.Magic_Number.Value;
 			}
 		}
 
@@ -260,7 +260,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return new[] { (int)rec.created1, (int)rec.created2 };
+				return new[] { (int)rec.created1.Value, (int)rec.created2.Value };
 			}
 		}
 
@@ -271,7 +271,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return new[] { (int)rec.modified1, (int)rec.modified2 };
+				return new[] { (int)rec.modified1.Value, (int)rec.modified2.Value };
 			}
 		}
 

@@ -83,7 +83,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.forcebold_threshold;
+				return (int)rec.forcebold_threshold.Value;
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.stroke_width;
+				return (int)rec.stroke_width.Value;
 			}
 		}
 
@@ -106,7 +106,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.expansion_factor;
+				return (int)rec.expansion_factor.Value;
 			}
 		}
 
@@ -175,7 +175,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (uint)rec.subrmap_offset;
+				return (uint)rec.subrmap_offset.Value;
 			}
 		}
 

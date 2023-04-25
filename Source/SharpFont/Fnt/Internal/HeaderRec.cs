@@ -25,8 +25,8 @@ SOFTWARE.*/
 using System;
 using System.Runtime.InteropServices;
 
-using FT_Long = System.Int32;
-using FT_ULong = System.UInt32;
+using FT_Long = System.Runtime.InteropServices.CLong;
+using FT_ULong = System.Runtime.InteropServices.CULong;
 
 namespace SharpFont.Fnt.Internal
 {

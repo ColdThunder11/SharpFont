@@ -27,6 +27,9 @@ SOFTWARE.*/
 using System;
 using System.Runtime.InteropServices;
 
+using FT_Long = System.Runtime.InteropServices.CLong;
+using FT_ULong = System.Runtime.InteropServices.CULong;
+
 namespace SharpFont
 {
 	/// <summary>
@@ -39,8 +42,8 @@ namespace SharpFont
 
 		//typedef signed long  FT_Pos;
 		//May change
-		private Int32 x;
-		private Int32 y;
+		private FT_Long x;
+		private FT_Long y;
 
 		#endregion
 
@@ -54,8 +57,8 @@ namespace SharpFont
 		public FTVector26Dot6(Fixed26Dot6 x, Fixed26Dot6 y)
 			: this()
 		{
-			this.x = x.Value;
-			this.y = y.Value;
+			this.x = new CLong(x.Value) ;
+			this.y = new CLong(y.Value);
 		}
 
 		internal FTVector26Dot6(IntPtr reference)
@@ -77,9 +80,9 @@ namespace SharpFont
 		/// </summary>
 		public Fixed26Dot6 X
 		{
-			get { return Fixed26Dot6.FromRawValue((int)x); }
+			get { return Fixed26Dot6.FromRawValue((int)x.Value); }
 
-			set { x = value.Value; }
+			set { x = new CLong(value.Value); }
 		}
 
 		/// <summary>
@@ -87,9 +90,9 @@ namespace SharpFont
 		/// </summary>
 		public Fixed26Dot6 Y
 		{
-			get { return Fixed26Dot6.FromRawValue((int)y); }
+			get { return Fixed26Dot6.FromRawValue((int)y.Value); }
 
-			set { y = value.Value; }
+			set { y = new CLong(value.Value); }
 		}
 
 		#endregion
@@ -129,7 +132,7 @@ namespace SharpFont
 		/// <returns>A value indicating equality.</returns>
 		public bool Equals(FTVector26Dot6 other)
 		{
-			return x == other.x && y == other.y;
+			return x.Value == other.x.Value && y.Value == other.y.Value;
 		}
 
 		/// <summary>

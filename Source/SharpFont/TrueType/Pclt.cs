@@ -59,10 +59,10 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.Version;
+				return (int)rec.Version.Value;
 			}
 		}
-		
+
 		/// <summary>
 		/// A unique identifier for the font. Refer to the specification for the meaning of various bits.
 		/// </summary>
@@ -71,7 +71,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.FontNumber;
+				return (uint)rec.FontNumber.Value;
 			}
 		}
 
@@ -197,7 +197,7 @@ namespace SharpFont.TrueType
 				return rec.StrokeWeight;
 			}
 		}
-		
+
 		/// <summary>
 		/// Indicates the stroke weight. Valid values are in the range -5 to 5. Length is 1 byte.
 		/// </summary>
@@ -208,7 +208,7 @@ namespace SharpFont.TrueType
 				return rec.WidthType;
 			}
 		}
-		
+
 		/// <summary>
 		/// Encodes the serif style. The top two bits indicate sans serif/monoline or serif/contrasting.
 		/// Valid values for the lower 6 bits are in the range 0 to 12. Length is 1 byte.
@@ -220,7 +220,7 @@ namespace SharpFont.TrueType
 				return rec.SerifStyle;
 			}
 		}
-		
+
 		/// <summary>
 		/// Reserved. Set to 0.
 		/// </summary>

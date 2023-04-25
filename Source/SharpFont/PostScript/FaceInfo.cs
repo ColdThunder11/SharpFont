@@ -70,7 +70,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.cid_version;
+				return (int)rec.cid_version.Value;
 			}
 		}
 
@@ -137,7 +137,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (uint)rec.uid_base;
+				return (uint)rec.uid_base.Value;
 			}
 		}
 
@@ -163,7 +163,7 @@ namespace SharpFont.PostScript
 			{
 				uint[] xuid = new uint[rec.xuid.Length];
 				for (int i = 0; i < xuid.Length; i++)
-					xuid[i] = (uint)rec.xuid[i];
+					xuid[i] = (uint)rec.xuid[i].Value;
 
 				return xuid;
 			}
@@ -177,7 +177,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (uint)rec.cidmap_offset;
+				return (uint)rec.cidmap_offset.Value;
 			}
 		}
 
@@ -213,7 +213,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (uint)rec.cid_count;
+				return (uint)rec.cid_count.Value;
 			}
 		}
 
@@ -247,7 +247,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (uint)rec.data_offset;
+				return (uint)rec.data_offset.Value;
 			}
 		}
 

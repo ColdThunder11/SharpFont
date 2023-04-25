@@ -93,7 +93,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return (int)rec.module_size;
+				return (int)rec.module_size.Value;
 			}
 		}
 
@@ -115,7 +115,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed16Dot16.FromRawValue((int)rec.module_version);
+				return Fixed16Dot16.FromRawValue((int)rec.module_version.Value);
 			}
 		}
 
@@ -127,7 +127,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed16Dot16.FromRawValue((int)rec.module_requires);
+				return Fixed16Dot16.FromRawValue((int)rec.module_requires.Value);
 			}
 		}
 

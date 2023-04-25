@@ -169,7 +169,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.blue_scale;
+				return (int)rec.blue_scale.Value;
 			}
 		}
 
@@ -300,7 +300,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.expansion_factor;
+				return (int)rec.expansion_factor.Value;
 			}
 		}
 
@@ -313,7 +313,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.language_group;
+				return (int)rec.language_group.Value;
 			}
 		}
 
@@ -325,7 +325,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.password;
+				return (int)rec.password.Value;
 			}
 		}
 

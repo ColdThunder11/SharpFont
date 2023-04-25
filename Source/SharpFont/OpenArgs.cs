@@ -111,7 +111,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return (int)rec.memory_size;
+				return (int)rec.memory_size.Value;
 			}
 		}
 

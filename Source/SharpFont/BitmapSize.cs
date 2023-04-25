@@ -100,7 +100,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.size);
+				return Fixed26Dot6.FromRawValue((int)rec.size.Value);
 			}
 		}
 
@@ -111,7 +111,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.x_ppem);
+				return Fixed26Dot6.FromRawValue((int)rec.x_ppem.Value);
 			}
 		}
 
@@ -122,7 +122,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return Fixed26Dot6.FromRawValue((int)rec.y_ppem);
+				return Fixed26Dot6.FromRawValue((int)rec.y_ppem.Value);
 			}
 		}
 

@@ -191,7 +191,7 @@ namespace SharpFont
 				if (disposed)
 					throw new ObjectDisposedException("FaceCount", "Cannot access a disposed object.");
 
-				return (int)rec.num_faces;
+				return (int)rec.num_faces.Value;
 			}
 		}
 
@@ -205,7 +205,7 @@ namespace SharpFont
 				if (disposed)
 					throw new ObjectDisposedException("FaceIndex", "Cannot access a disposed object.");
 
-				return (int)rec.face_index;
+				return (int)rec.face_index.Value;
 			}
 		}
 
@@ -220,7 +220,7 @@ namespace SharpFont
 				if (disposed)
 					throw new ObjectDisposedException("FaceFlags", "Cannot access a disposed object.");
 
-				return (FaceFlags)rec.face_flags;
+				return (FaceFlags)rec.face_flags.Value;
 			}
 		}
 
@@ -235,7 +235,7 @@ namespace SharpFont
 				if (disposed)
 					throw new ObjectDisposedException("StyleFlags", "Cannot access a disposed object.");
 
-				return (StyleFlags)rec.style_flags;
+				return (StyleFlags)rec.style_flags.Value;
 			}
 		}
 
@@ -252,7 +252,7 @@ namespace SharpFont
 				if (disposed)
 					throw new ObjectDisposedException("GlyphCount", "Cannot access a disposed object.");
 
-				return (int)rec.num_glyphs;
+				return (int)rec.num_glyphs.Value;
 			}
 		}
 
@@ -876,7 +876,7 @@ namespace SharpFont
 			if (disposed)
 				throw new ObjectDisposedException("face", "Cannot access a disposed object.");
 
-			Error err = FT.FT_Set_Char_Size(Reference, new PlatformLong(width.Value), new PlatformLong(height.Value),
+			Error err = FT.FT_Set_Char_Size(Reference, new CLong(width.Value), new CLong(height.Value),
 				horizontalResolution, verticalResolution);
 
 			if (err != Error.Ok)

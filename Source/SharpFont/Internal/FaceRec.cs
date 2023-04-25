@@ -27,13 +27,8 @@ SOFTWARE.*/
 using System;
 using System.Runtime.InteropServices;
 
-//MSVC build of x64 program long should be 32 bit, but it give 64, emm,
-//WTF, may older freetype use other way to define FT_Long
-// Now only windows build, so just set it to 32 bit int, need more work.
-//using FT_Long = System.IntPtr;
-//using FT_ULong = System.UIntPtr;
-using FT_Long = System.Int32;
-using FT_ULong = System.UInt32;
+using FT_Long = System.Runtime.InteropServices.CLong;
+using FT_ULong = System.Runtime.InteropServices.CULong;
 
 namespace SharpFont.Internal
 {

@@ -60,7 +60,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return (int)rec.value;
+				return (int)rec.value.Value;
 			}
 		}
 

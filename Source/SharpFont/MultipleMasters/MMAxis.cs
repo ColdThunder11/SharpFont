@@ -77,7 +77,7 @@ namespace SharpFont.MultipleMasters
 		{
 			get
 			{
-				return (int)rec.minimum;
+				return (int)rec.minimum.Value;
 			}
 		}
 
@@ -88,7 +88,7 @@ namespace SharpFont.MultipleMasters
 		{
 			get
 			{
-				return (int)rec.maximum;
+				return (int)rec.maximum.Value;
 			}
 		}
 

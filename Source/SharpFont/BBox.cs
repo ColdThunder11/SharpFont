@@ -26,10 +26,9 @@ SOFTWARE.*/
 
 using System;
 using System.Runtime.InteropServices;
-//using FT_Long = System.IntPtr;
-//using FT_ULong = System.UIntPtr;
-using FT_Long = System.Int32;
-using FT_ULong = System.UInt32;
+
+using FT_Long = System.Runtime.InteropServices.CLong;
+using FT_ULong = System.Runtime.InteropServices.CULong;
 
 
 namespace SharpFont
@@ -59,10 +58,10 @@ namespace SharpFont
 		/// <param name="top">The upper bound.</param>
 		public BBox(int left, int bottom, int right, int top)
 		{
-			xMin = left;
-			yMin = bottom;
-			xMax = right;
-			yMax = top;
+			xMin = new CLong(left);
+			yMin = new CLong(bottom);
+			xMax = new CLong(right);
+			yMax = new CLong(top);
 		}
 
 		#endregion
@@ -74,7 +73,7 @@ namespace SharpFont
 		/// </summary>
 		public int Left
 		{
-			get { return (int)xMin; }
+			get { return System.Convert.ToInt32(xMin.Value); }
 		}
 
 		/// <summary>
@@ -82,7 +81,7 @@ namespace SharpFont
 		/// </summary>
 		public int Bottom
 		{
-			get { return (int)yMin; }
+			get { return System.Convert.ToInt32(yMin.Value); }
 		}
 
 		/// <summary>
@@ -90,7 +89,7 @@ namespace SharpFont
 		/// </summary>
 		public int Right
 		{
-			get { return (int)xMax; }
+			get { return System.Convert.ToInt32(xMax.Value); }
 		}
 
 		/// <summary>
@@ -98,7 +97,7 @@ namespace SharpFont
 		/// </summary>
 		public int Top
 		{
-			get { return (int)yMax; }
+			get { return System.Convert.ToInt32(yMax.Value); }
 		}
 
 		#endregion
@@ -139,10 +138,10 @@ namespace SharpFont
 		public bool Equals(BBox other)
 		{
 			return
-				xMin == other.xMin &&
-				yMin == other.yMin &&
-				xMax == other.xMax &&
-				yMax == other.yMax;
+				xMin.Value == other.xMin.Value &&
+				yMin.Value == other.yMin.Value &&
+				xMax.Value == other.xMax.Value &&
+				yMax.Value == other.yMax.Value;
 		}
 
 		/// <summary>
@@ -174,7 +173,7 @@ namespace SharpFont
 		/// <returns>A string representation of this instance.</returns>
 		public override string ToString()
 		{
-			return "Min: (" + (int)xMin + ", " + (int)yMin + "), Max: (" + (int)xMax + ", " + (int)yMax + ")";
+			return "Min: (" + (int)xMin.Value + ", " + (int)yMin.Value + "), Max: (" + (int)xMax.Value + ", " + (int)yMax.Value + ")";
 		}
 
 		#endregion

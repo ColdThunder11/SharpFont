@@ -61,10 +61,10 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.FormatType;
+				return (int)rec.FormatType.Value;
 			}
 		}
-		
+
 		/// <summary>
 		/// Gets the angle of italics, in degrees, counter-clockwise from vertical.
 		/// </summary>
@@ -72,10 +72,10 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.italicAngle;
+				return (int)rec.italicAngle.Value;
 			}
 		}
-		
+
 		/// <summary>
 		/// Gets the recommended position of the underline.
 		/// </summary>
@@ -86,7 +86,7 @@ namespace SharpFont.TrueType
 				return rec.underlinePosition;
 			}
 		}
-		
+
 		/// <summary>
 		/// Gets the recommended thickness of the underline.
 		/// </summary>
@@ -106,7 +106,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.isFixedPitch;
+				return (uint)rec.isFixedPitch.Value;
 			}
 		}
 
@@ -118,7 +118,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.minMemType42;
+				return (uint)rec.minMemType42.Value;
 			}
 		}
 
@@ -130,7 +130,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.maxMemType42;
+				return (uint)rec.maxMemType42.Value;
 			}
 		}
 
@@ -143,7 +143,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.minMemType1;
+				return (uint)rec.minMemType1.Value;
 			}
 		}
 
@@ -156,7 +156,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (uint)rec.maxMemType1;
+				return (uint)rec.maxMemType1.Value;
 			}
 		}
 

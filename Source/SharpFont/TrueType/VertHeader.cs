@@ -67,7 +67,7 @@ namespace SharpFont.TrueType
 		{
 			get
 			{
-				return (int)rec.Version;
+				return (int)rec.Version.Value;
 			}
 		}
 

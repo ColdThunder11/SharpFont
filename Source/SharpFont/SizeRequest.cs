@@ -27,8 +27,8 @@ using System.Runtime.InteropServices;
 
 using SharpFont.Internal;
 
-using FT_Long = System.Int32;
-using FT_ULong = System.UInt32;
+using FT_Long = System.Runtime.InteropServices.CLong;
+using FT_ULong = System.Runtime.InteropServices.CULong;
 
 namespace SharpFont
 {
@@ -77,12 +77,12 @@ namespace SharpFont
 		{
 			get
 			{
-				return (int)width;
+				return (int)width.Value;
 			}
 
 			set
 			{
-				width = (FT_Long)value;
+				width = new CLong(value);
 			}
 		}
 
@@ -93,12 +93,12 @@ namespace SharpFont
 		{
 			get
 			{
-				return (int)height;
+				return (int)height.Value;
 			}
 
 			set
 			{
-				height = (FT_Long)value;
+				height = new CLong(value);
 			}
 		}
 
@@ -172,8 +172,8 @@ namespace SharpFont
 		public bool Equals(SizeRequest other)
 		{
 			return requestType == other.requestType &&
-				width == other.width &&
-				height == other.height &&
+				width.Value == other.width.Value &&
+				height.Value == other.height.Value &&
 				horiResolution == other.horiResolution &&
 				vertResolution == other.vertResolution;
 		}

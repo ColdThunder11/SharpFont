@@ -80,6 +80,7 @@ namespace SharpFont
 
 				if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 				{
+					//return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
 					return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
 				}
 
@@ -144,7 +145,7 @@ namespace SharpFont
 		internal static extern Error FT_Request_Size(IntPtr face, IntPtr req);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
-		internal static extern Error FT_Set_Char_Size(IntPtr face, PlatformLong char_width, PlatformLong char_height,
+		internal static extern Error FT_Set_Char_Size(IntPtr face, CLong char_width, CLong char_height,
 			uint horz_resolution, uint vert_resolution);
 
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]

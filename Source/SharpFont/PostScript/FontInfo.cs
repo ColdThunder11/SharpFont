@@ -114,7 +114,7 @@ namespace SharpFont.PostScript
 		{
 			get
 			{
-				return (int)rec.italic_angle;
+				return (int)rec.italic_angle.Value;
 			}
 		}
 

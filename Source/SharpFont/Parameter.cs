@@ -64,7 +64,7 @@ namespace SharpFont
 		{
 			get
 			{
-				return (ParamTag)rec.tag;
+				return (ParamTag)rec.tag.Value;
 			}
 		}
 
