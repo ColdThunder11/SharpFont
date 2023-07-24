@@ -25,6 +25,7 @@ SOFTWARE.*/
 #endregion
 
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using SharpFont.Cache;
 using SharpFont.Internal;
@@ -81,6 +82,18 @@ namespace SharpFont
 				if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 				{
 					//return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
+					if (File.Exists("libfreetype.6.dylib"))
+					{
+						return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
+					}
+
+					if (RuntimeInformation.OSArchitecture == Architecture.Arm64)
+					{
+						if (Directory.Exists("/opt/homebrew/opt/freetype"))
+						{
+							return NativeLibrary.Load("/opt/homebrew/opt/freetype/lib/libfreetype.6.dylib", typeof(FT).Assembly,  path);
+						}
+					}
 					return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
 				}
 
