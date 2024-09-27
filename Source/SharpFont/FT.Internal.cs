@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 
 /*Copyright (c) 2012-2016 Robert Rouhani <robert.rouhani@gmail.com>
 
@@ -127,7 +127,7 @@ namespace SharpFont
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Done_FreeType(IntPtr library);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Unicode, BestFitMapping = false,
 			ThrowOnUnmappableChar = true)]
 		internal static extern Error FT_New_Face(IntPtr library, string filepathname, int face_index, out IntPtr aface);
 
@@ -138,7 +138,7 @@ namespace SharpFont
 		[DllImport(FreetypeDll, CallingConvention = CallConvention)]
 		internal static extern Error FT_Open_Face(IntPtr library, IntPtr args, int face_index, out IntPtr aface);
 
-		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Ansi, BestFitMapping = false,
+		[DllImport(FreetypeDll, CallingConvention = CallConvention, CharSet = CharSet.Unicode, BestFitMapping = false,
 			ThrowOnUnmappableChar = true)]
 		internal static extern Error FT_Attach_File(IntPtr face, string filepathname);
 
