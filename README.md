@@ -1,8 +1,10 @@
 ## ColdThunder11's fork of SharpFont
-
-This fork is a part of Serikadv's dependency, update the version and bind of FreeType and HarfBuzz to fit modern system. Dependencies based on HarfBuzz 6.0.0 and FreeType 2.12.1.  
-## !!!Warning!!!
-Only windows x64 tested now, only those methods I used in Serikadv been updated, most of function may not work correctly! Dependencies of FreeType and HarfBuzz are build with msvc 2022 that Microsoft Visual C++ Redistributable packages for Visual Studio 2015, 2017, 2019, and 2022 is required to run it.  
+What does this fork do:
+ - Update build target to .NET 6.0
+ - Add buildin FreeType lib
+ - Use .NET 6.0's CULong and CLong to avoid C Long length issue in windows
+ - Update some bind to FreeType 2.12.1, HOWERER, only those methods I used in Serikadv been updated, most of function may not work correctly
+ - Dependencies on windows are build with msvc 2022 that Microsoft Visual C++ Redistributable packages for Visual Studio 2015, 2017, 2019, and 2022 is required to make it works on windows.
 
 SharpFont [![NuGet Version](https://img.shields.io/nuget/vpre/SharpFont.svg)](https://www.nuget.org/packages/SharpFont) [![Gratipay Tips](https://img.shields.io/gratipay/Robmaister.svg)](https://gratipay.com/Robmaister)
 =========
