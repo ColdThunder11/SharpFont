@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 
 /*Copyright (c) 2012-2016 Robert Rouhani <robert.rouhani@gmail.com>
 
@@ -60,17 +60,24 @@ namespace SharpFont
 #if NETCOREAPP
 		static FT()
 		{
-			// Library names should be fine on Windows, so no need to set import resolver.
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-			{
-				return;
-			}
-
 			NativeLibrary.SetDllImportResolver(typeof(FT).Assembly, (name, assembly, path) =>
 			{
 				if (name != FreetypeDll)
 				{
 					return IntPtr.Zero;
+				}
+
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+				{
+					if (RuntimeInformation.OSArchitecture == Architecture.X64)
+						return NativeLibrary.Load(
+							Path.Combine(Environment.CurrentDirectory, "runtimes\\win-x64\\native\\freetype.dll"),
+							typeof(FT).Assembly, path);
+					else if (RuntimeInformation.OSArchitecture == Architecture.X86)
+						return NativeLibrary.Load(
+							Path.Combine(Environment.CurrentDirectory, "runtimes\\win-x86\\native\\freetype.dll"),
+							typeof(FT).Assembly, path);
+					else return NativeLibrary.Load("freetype", typeof(FT).Assembly, path);
 				}
 
 				if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
@@ -81,7 +88,6 @@ namespace SharpFont
 
 				if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 				{
-					//return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
 					if (File.Exists("libfreetype.6.dylib"))
 					{
 						return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
@@ -89,11 +95,19 @@ namespace SharpFont
 
 					if (RuntimeInformation.OSArchitecture == Architecture.Arm64)
 					{
+						if (Directory.Exists("runtimes/osx-Arm64/libfreetype.6.dylib"))
+						{
+							return NativeLibrary.Load(
+								Path.Combine(Environment.CurrentDirectory, "runtimes/osx-Arm64/libfreetype.6.dylib"),
+								typeof(FT).Assembly, path);
+						}
+
 						if (Directory.Exists("/opt/homebrew/opt/freetype"))
 						{
-							return NativeLibrary.Load("/opt/homebrew/opt/freetype/lib/libfreetype.6.dylib", typeof(FT).Assembly,  path);
+							return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
 						}
 					}
+
 					return NativeLibrary.Load("libfreetype.6.dylib", typeof(FT).Assembly, path);
 				}
 

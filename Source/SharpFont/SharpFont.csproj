@@ -12,13 +12,6 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="..\SpaceWizards.SharpFont.dll.config">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-			<PackagePath>contentFiles/any/net472</PackagePath>
-		</Content>
-	</ItemGroup>
-	<ItemGroup>
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
@@ -27,4 +20,11 @@
 	<ItemGroup>
 		<PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" Condition="'$(TargetFramework)' == 'net45'" />
 	</ItemGroup>
+
+    <ItemGroup>
+        <Content Include="runtimes\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
 </Project>
